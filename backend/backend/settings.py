@@ -156,5 +156,4 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True 
 EMAIL_HOST_USER = 'filhoraniere2004@gmail.com'
 EMAIL_HOST_PASSWORD = 'pdwpnrobossncxie'
-DEFAULT_FROM_EMAIL = 'filhoraniere2004@gmail.com' 
-
+DEFAULT_FROM_EMAIL = 'filhoraniere2004@gmail.com'

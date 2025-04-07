@@ -6,7 +6,7 @@ from django.contrib.auth.hashers import make_password
 from .serializers import ForgotPasswordSerializer, ResetPasswordSerializer
 from django.contrib.auth import update_session_auth_hash
 from ..models import PasswordReset
-from ..utils import send_reset_email 
+from ..utils import send_reset_email
 
 
 class RegisterView(APIView):
