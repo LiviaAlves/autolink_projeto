@@ -4,6 +4,8 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import ForgotPassword from "./pages/ForgotPassword";
+import TelaInicial from "./pages/TelaInicial";
+
 
 function App() {
   return (
@@ -12,6 +14,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/inicio" element={<TelaInicial />} />
         <Route
           path="/dashboard"
           element={
