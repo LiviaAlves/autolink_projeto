@@ -123,6 +123,12 @@ button:hover {
 .oficinas-btn:hover {
   background-color: #8a8500;
 }
+.ofc{
+    margin-left: 80px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
 
 @media (max-width: 768px) {
   .header-content {

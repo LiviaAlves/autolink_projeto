@@ -1,7 +1,7 @@
-import "../styles/Telainicial.css";
+import "../styles/TelaPublica.css";
 import { useNavigate } from "react-router-dom";
 
-const TelaInicial = () => {
+const TelaPublica = () => {
   const navigate = useNavigate();
 
   const handleProximasOficinas = () => {
@@ -21,12 +21,22 @@ const TelaInicial = () => {
             <div className="logo">
               <img src="/autolink2.png" alt="AutoLink" className="h-10" />
             </div>
-            <nav className="nav-links">
+            <nav className="nav-links flex items-center gap-4">
               <a href="#">REGISTRAR EMPRESA</a>
               <a href="#">MECÂNICAS</a>
-              <div className="user-info">
-                <span className="font-bold">LÍVIA</span>
-                <img src="/perfil.jpeg" alt="Avatar do usuário" className="avatar" />
+              <div className="bot flex gap-2">
+                <button
+                  onClick={() => navigate("/register")}
+                  className=" bot1 text-yellow-400 font-bold border border-yellow-400 px-4 py-2 rounded hover:bg-yellow-400 hover:text-black transition"
+                >
+                  CRIAR CONTA
+                </button>
+                <button
+                  onClick={() => navigate("/login")}
+                  className="bg-yellow-600 hover:bg-yellow-500 text-white font-bold px-4 py-2 rounded transition"
+                >
+                  ENTRAR
+                </button>
               </div>
             </nav>
           </div>
@@ -56,4 +66,4 @@ const TelaInicial = () => {
   );
 };
 
-export default TelaInicial;
+export default TelaPublica;
