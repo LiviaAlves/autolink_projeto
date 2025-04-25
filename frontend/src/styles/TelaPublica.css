@@ -1,0 +1,22 @@
+.bot{
+    margin-left: 700px;
+    
+}
+.bot1{
+    margin-right: 35px;
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+}
+
+.ofc{
+    margin-left: 80px;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+
+.btn3{
+    margin-left: 300px;
+    margin-top: 20px;
+}
