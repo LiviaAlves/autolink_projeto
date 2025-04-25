@@ -4,6 +4,8 @@ import Register from "./pages/Register";
 import Dashboard from "./pages/Dashboard";
 import PrivateRoute from "./components/PrivateRoute";
 import ForgotPassword from "./pages/ForgotPassword";
+import RegisterCompany from "./pages/RegisterCompany";
+import Company from "./pages/Company";
 
 function App() {
   return (
@@ -12,14 +14,9 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
-        <Route
-          path="/dashboard"
-          element={
-            <PrivateRoute>
-              <Dashboard />
-            </PrivateRoute>
-          }
-        />
+        <Route path="/register-company" element={ <PrivateRoute> <RegisterCompany /> </PrivateRoute> } />
+        <Route path="/dashboard" element={ <PrivateRoute> <Dashboard /> </PrivateRoute> } />
+        <Route path="/company" element={ <PrivateRoute> <Company /> </PrivateRoute>}/>
       </Routes>
     </Router>
   );

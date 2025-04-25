@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { FiEye, FiEyeOff } from "react-icons/fi";
-import '../styles/register.css';
+import "../styles/register.css";
 
 const Register = () => {
   const [form, setForm] = useState({ username: "", email: "", password: "", confirmPassword: "" });
@@ -17,21 +17,18 @@ const Register = () => {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setForm({ ...form, [e.target.name]: e.target.value });
 
-    // Verifica se o campo alterado é a confirmação de senha
     if (e.target.name === "confirmPassword") {
       if (form.password !== e.target.value) {
         setConfirmPasswordError("As senhas não são iguais.");
       } else {
-        setConfirmPasswordError(null); // Remover a mensagem de erro assim que as senhas são iguais
+        setConfirmPasswordError(null);
       }
     }
-
-    // Verificar se o campo de senha foi alterado e garantir que a confirmação de senha seja validada em tempo real
     if (e.target.name === "password" && form.confirmPassword !== "") {
       if (form.password !== form.confirmPassword) {
         setConfirmPasswordError("As senhas não são iguais.");
       } else {
-        setConfirmPasswordError(null); // Remover erro se as senhas forem iguais
+        setConfirmPasswordError(null);
       }
     }
   };
@@ -47,7 +44,6 @@ const Register = () => {
   };
 
   const handleConfirmPasswordBlur = () => {
-    // Se o campo de confirmação de senha estiver vazio, remova o erro
     if (form.confirmPassword === "") {
       setConfirmPasswordError(null);
     } else if (form.password !== form.confirmPassword) {
@@ -57,7 +53,6 @@ const Register = () => {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-
     if (passwordError || confirmPasswordError) {
       setError("Corrija os erros antes de enviar");
       return;
@@ -68,8 +63,8 @@ const Register = () => {
 
     try {
       await axios.post("http://127.0.0.1:8000/api/register/", form);
-      setSuccessMessage("Conta criada com sucesso!"); 
-      setForm({ username: "", email: "", password: "", confirmPassword: "" }); 
+      setSuccessMessage("Conta criada com sucesso!");
+      setForm({ username: "", email: "", password: "", confirmPassword: "" });
       setTimeout(() => {
         navigate("/login");
       }, 2000);
@@ -87,15 +82,15 @@ const Register = () => {
   };
 
   return (
-    <div className="container">
-      <div className="logo">
-        <img src="../../public/autolink2.png" alt="Logo" />
+    <div className="register-page">
+      <div className="register-logo">
+        <img src="/autolink2.png" alt="Logo" />
       </div>
 
-      <div className="form-container">
+      <div className="register-form-container">
         <h2>Crie sua conta!</h2>
         <form onSubmit={handleSubmit}>
-          <div className="input-container">
+          <div className="register-input-container">
             <input
               type="text"
               name="username"
@@ -108,7 +103,7 @@ const Register = () => {
             <label htmlFor="username">Nome</label>
           </div>
 
-          <div className="input-container">
+          <div className="register-input-container">
             <input
               type="email"
               name="email"
@@ -121,8 +116,8 @@ const Register = () => {
             <label htmlFor="email">E-mail</label>
           </div>
 
-          <div className="password-container">
-            <div className="input-container">
+          <div className="register-password-container">
+            <div className="register-input-container">
               <input
                 type={passwordVisible ? "text" : "password"}
                 name="password"
@@ -135,18 +130,17 @@ const Register = () => {
               />
               <label htmlFor="password">Senha</label>
               <span
-                className="eye-icon"
+                className="register-eye-icon"
                 onClick={() => setPasswordVisible(!passwordVisible)}
               >
                 {passwordVisible ? <FiEyeOff /> : <FiEye />}
               </span>
             </div>
-
-            {passwordError && <div className="error">{passwordError}</div>}
+            {passwordError && <div className="register-error">{passwordError}</div>}
           </div>
 
-          <div className="password-container">
-            <div className="input-container">
+          <div className="register-password-container">
+            <div className="register-input-container">
               <input
                 type={confirmPasswordVisible ? "text" : "password"}
                 name="confirmPassword"
@@ -154,31 +148,30 @@ const Register = () => {
                 placeholder="Repetir Senha"
                 value={form.confirmPassword}
                 onChange={handleChange}
-                onBlur={handleConfirmPasswordBlur} // Verificação ao perder o foco
+                onBlur={handleConfirmPasswordBlur}
                 required
               />
               <label htmlFor="confirmPassword">Repetir Senha</label>
               <span
-                className="eye-icon"
+                className="register-eye-icon"
                 onClick={() => setConfirmPasswordVisible(!confirmPasswordVisible)}
               >
                 {confirmPasswordVisible ? <FiEyeOff /> : <FiEye />}
               </span>
             </div>
-
-            {confirmPasswordError && <div className="error">{confirmPasswordError}</div>}
+            {confirmPasswordError && <div className="register-error">{confirmPasswordError}</div>}
           </div>
 
-          {error && <div className="error">{error}</div>}
+          {error && <div className="register-error">{error}</div>}
 
-          <button type="submit">Criar conta</button>
+          <button type="submit" className="register-submit-button">Criar conta</button>
         </form>
 
-        <button className="ja-temo-conta" onClick={handleLoginRedirect}>
+        <button className="register-login-btn" onClick={handleLoginRedirect}>
           Já tenho conta
         </button>
 
-        {successMessage && <div className="success-message">{successMessage}</div>}
+        {successMessage && <div className="register-success-message">{successMessage}</div>}
       </div>
     </div>
   );

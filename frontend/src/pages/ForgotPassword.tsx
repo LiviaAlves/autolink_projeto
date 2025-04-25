@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import '../styles/register.css';
+import '../styles/forgotpassword.css';
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -111,78 +111,82 @@ const ForgotPassword = () => {
   };
 
   return (
-    <div className="container">
-      <div className="form-container">
-        {step === 1 ? (
-          <>
-            <h2>Recuperação de Senha</h2>
-            <form onSubmit={handleEmailSubmit}>
-              <div className="input-container">
-                <input
-                  type="email"
-                  name="email"
-                  placeholder=" "
-                  onChange={(e) => setEmail(e.target.value)}
-                  required
-                  value={email}
-                />
-                <label htmlFor="email">Digite seu email</label>
-              </div>
-              {error && <div className="error">{error}</div>}
-              <button type="submit">Enviar código</button>
-            </form>
-          </>
-        ) : (
-          <>
-            <h2>Verificação do Código</h2>
-            <form onSubmit={handleCodeSubmit}>
-              <div className="input-container">
-                <input
-                  type="text"
-                  name="code"
-                  placeholder=" "
-                  onChange={(e) => setCode(e.target.value)}
-                  required
-                  value={code}
-                />
-                <label htmlFor="code">Código recebido</label>
-              </div>
-
-              <div className="input-container">
-                <input
-                  type="password"
-                  name="newPassword"
-                  placeholder=" "
-                  onChange={handleNewPasswordChange}
-                  required
-                  value={newPassword}
-                />
-                <label htmlFor="newPassword">Nova Senha</label>
-                {passwordError && <div className="error">{passwordError}</div>}
-              </div>
-
-              <div className="input-container">
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  placeholder=" "
-                  onChange={handleConfirmPasswordChange}
-                  required
-                  value={confirmPassword}
-                />
-                <label htmlFor="confirmPassword">Confirmar Nova Senha</label>
-                {confirmPasswordError && <div className="error">{confirmPasswordError}</div>}
-              </div>
-
-              {error && <div className="error">{error}</div>}
-              <button type="submit">Redefinir Senha</button>
-            </form>
-          </>
-        )}
-
-        {successMessage && <div className="success-message">{successMessage}</div>}
-      </div>
+    <div className="forgot-password-page">
+    <div className="forgot-password-logo">
+      <img src="/autolink2.png" alt="Logo" />
     </div>
+
+    <div className="forgot-password-form-container">
+      {step === 1 ? (
+        <>
+          <h2>Recuperação de Senha</h2>
+          <form onSubmit={handleEmailSubmit} className="forgot-password-form">
+            <div className="forgot-password-input-container">
+              <input
+                type="email"
+                name="email"
+                placeholder=" "
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                value={email}
+              />
+              <label htmlFor="email">Digite seu email</label>
+            </div>
+            {error && <div className="forgot-password-error">{error}</div>}
+            <button type="submit" className="forgot-password-submit-button">Enviar código</button>
+          </form>
+        </>
+      ) : (
+        <>
+          <h2>Verificação do Código</h2>
+          <form onSubmit={handleCodeSubmit} className="forgot-password-form">
+            <div className="forgot-password-input-container">
+              <input
+                type="text"
+                name="code"
+                placeholder=" "
+                onChange={(e) => setCode(e.target.value)}
+                required
+                value={code}
+              />
+              <label htmlFor="code">Código recebido</label>
+            </div>
+
+            <div className="forgot-password-input-container">
+              <input
+                type="password"
+                name="newPassword"
+                placeholder=" "
+                onChange={handleNewPasswordChange}
+                required
+                value={newPassword}
+              />
+              <label htmlFor="newPassword">Nova Senha</label>
+              {passwordError && <div className="forgot-password-error">{passwordError}</div>}
+            </div>
+
+            <div className="forgot-password-input-container">
+              <input
+                type="password"
+                name="confirmPassword"
+                placeholder=" "
+                onChange={handleConfirmPasswordChange}
+                required
+                value={confirmPassword}
+              />
+              <label htmlFor="confirmPassword">Confirmar Nova Senha</label>
+              {confirmPasswordError && <div className="forgot-password-error">{confirmPasswordError}</div>}
+            </div>
+
+            {error && <div className="forgot-password-error">{error}</div>}
+            <button type="submit" className="forgot-password-submit-button">Redefinir Senha</button>
+          </form>
+        </>
+      )}
+
+      {successMessage && <div className="forgot-password-success-message">{successMessage}</div>}
+    </div>
+  </div>
   );
 };
 

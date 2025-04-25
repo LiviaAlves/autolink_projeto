@@ -7,6 +7,10 @@ from .serializers import ForgotPasswordSerializer, ResetPasswordSerializer
 from django.contrib.auth import update_session_auth_hash
 from ..models import PasswordReset
 from ..utils import send_reset_email
+from rest_framework import viewsets
+from ..models import Empresa
+from .serializers import EmpresaSerializer
+from rest_framework.permissions import IsAuthenticated, AllowAny
 
 
 class RegisterView(APIView):
@@ -66,3 +70,9 @@ class ResetPasswordView(APIView):
                 return Response({"error": "Código de reset inválido."}, status=status.HTTP_400_BAD_REQUEST)
 
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+
+class EmpresaViewSet(viewsets.ModelViewSet):
+    queryset = Empresa.objects.all()
+    serializer_class = EmpresaSerializer
+    permission_classes = [AllowAny]

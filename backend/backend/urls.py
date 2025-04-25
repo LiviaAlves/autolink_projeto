@@ -16,3 +16,5 @@ urlpatterns = [
     path('api/forgot-password/', ForgotPasswordView.as_view(), name='forgot-password'),
     path('api/reset-password/', ResetPasswordView.as_view(), name='reset-password'),
 ] + static(settings.MEDIA_URL , document_root =settings.MEDIA_ROOT)
+
+

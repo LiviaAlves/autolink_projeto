@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from ..models import PasswordReset
 import logging
 from rest_framework.exceptions import ValidationError
+from ..models import Empresa
 
 logger = logging.getLogger(__name__)
 
@@ -59,3 +60,9 @@ class ResetPasswordSerializer(serializers.Serializer):
             raise serializers.ValidationError("Código inválido ou expirado.")
 
         return attrs
+    
+
+class EmpresaSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Empresa
+        fields = '__all__'
